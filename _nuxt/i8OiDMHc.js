@@ -1,0 +1,1 @@
+import{H as o,c,I as f,J as d,B as v,K as l,L as i,M as h,N as m}from"./CQKTk-rv.js";function U(t,a={}){const e=a.head||o();if(e)return e.ssr?e.push(t,a):p(e,t,a)}function p(t,a,e={}){const s=c(!1),n=c({});f(()=>{n.value=s.value?{}:d(a)});const r=t.push(n.value,e);return v(n,u=>{r.patch(u)}),l()&&(i(()=>{r.dispose()}),h(()=>{s.value=!0}),m(()=>{s.value=!1})),r}export{U as u};
