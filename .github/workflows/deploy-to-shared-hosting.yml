@@ -1,0 +1,66 @@
+name: Deploy Laravel & Nuxt (SSG + ISR)
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check SSH Secrets
+        run: |
+          if [[ -z "${{ secrets.SSH_HOST }}" || -z "${{ secrets.SSH_USER }}" || -z "${{ secrets.SSH_KEY }}" || -z "${{ secrets.SSH_PORT }}" ]]; then
+            echo "Missing required SSH secrets!"
+            exit 1
+          fi
+
+      - name: Deploy Laravel to Server (via SSH)
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            REPO_URL="https://github.com/${{ github.repository }}.git"
+            mkdir -p ~/thaolaptrinh.com && cd $_
+            if [ ! -d ".git" ]; then
+              git clone $REPO_URL .
+            else
+              git pull origin main
+            fi
+            composer install --no-dev --optimize-autoloader
+            php artisan migrate --force
+            php artisan optimize:clear
+            echo "Laravel Backend Deployed!"
+
+      - name: Install & Build Nuxt (SSG)
+        run: |
+          cd nuxt
+          yarn install --frozen-lockfile
+          yarn generate
+
+      - name: Upload Nuxt SSG to Hosting (via SCP)
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "nuxt/.output/public/*"
+          target: "~/public_html"
+          strip_components: 3
+          overwrite: true
+
+      # Success message
+      - name: Success Message
+        run: echo "Nuxt SSG Deployed Successfully!"
