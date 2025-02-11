@@ -656,7 +656,7 @@
     which "^3.0.1"
     ws "^8.18.0"
 
-"@nuxt/kit@3.15.4", "@nuxt/kit@^3.15.0", "@nuxt/kit@^3.15.1":
+"@nuxt/kit@3.15.4", "@nuxt/kit@^3.13.2", "@nuxt/kit@^3.15.0", "@nuxt/kit@^3.15.1":
   version "3.15.4"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.15.4.tgz#122f511e518573320a035b5e24adf0118d51485d"
   integrity sha512-dr7I7eZOoRLl4uxdxeL2dQsH0OrbEiVPIyBHnBpA4co24CBnoJoF+JINuP9l3PAM3IhUzc5JIVq3/YY3lEc3Hw==
@@ -747,6 +747,16 @@
     vite-node "^3.0.4"
     vite-plugin-checker "^0.8.0"
     vue-bundle-renderer "^2.1.1"
+
+"@nuxtjs/color-mode@3.5.2":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/color-mode/-/color-mode-3.5.2.tgz#4f2cbdd44009068b746e3bb0964b761b90969b73"
+  integrity sha512-cC6RfgZh3guHBMLLjrBB2Uti5eUoGM9KyauOaYS9ETmxNWBMTvpgjvSiSJp1OFljIXPIqVTJ3xtJpSNZiO3ZaA==
+  dependencies:
+    "@nuxt/kit" "^3.13.2"
+    pathe "^1.1.2"
+    pkg-types "^1.2.1"
+    semver "^7.6.3"
 
 "@nuxtjs/tailwindcss@6.13.1":
   version "6.13.1"
