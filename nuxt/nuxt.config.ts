@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    '@nuxtjs/i18n',
   ],
 
   colorMode: {
@@ -20,5 +21,9 @@ export default defineNuxtConfig({
     classSuffix: '',
     storage: 'localStorage',
     storageKey: 'nuxt-color-mode'
+  },
+
+  i18n: {
+    vueI18n: './i18n.config.ts',
   }
 })
