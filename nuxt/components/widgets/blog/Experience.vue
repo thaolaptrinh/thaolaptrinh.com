@@ -1,6 +1,6 @@
 <template>
   <div class="cr8w3">
-    <h2 class="cxmc9 cg0ht cpynq cjvvo">Work Experience</h2>
+    <h2 class="cxmc9 cg0ht cpynq cjvvo">{{ $t("work_experience") }}</h2>
     <ul class="cr8w3">
       <!-- Item -->
       <li class="c5c77 cpnf3" v-for="(item, key) in experience" :key>
@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-  defineProps({
-    experience: Object,
-  });
+defineProps({
+  experience: Object,
+});
 </script>

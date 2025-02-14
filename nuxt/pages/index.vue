@@ -4,6 +4,7 @@
     <div class="c8b8k">
       <div class="c2r2p c7sw6">
         <img
+          :src="`images/avatar-1.webp`"
           class="c3iz2 cme53"
           width="56"
           height="56"
@@ -32,7 +33,7 @@
         <div class="c7qcc">
           <!-- Latest Articles -->
           <section>
-            <h2 class="cpynq c670g c8dzi cec5b">Latest Articles</h2>
+            <h2 class="cpynq c670g c8dzi cec5b">{{ $t("latest_articles") }}</h2>
 
             <!-- Filters -->
             <ul class="cg3vi crdpf cnxqt c8z7y cme8e cfwvb">
@@ -106,7 +107,6 @@
               </article>
             </div>
           </section>
-
         </div>
       </div>
     </div>
@@ -115,7 +115,7 @@
     <aside class="cd6k2 cf0x4 csb3e">
       <div class="c92wf">
         <!-- Subscribe widget -->
-       <widgets-blog-subscribe />
+        <widgets-blog-subscribe />
       </div>
     </aside>
   </div>

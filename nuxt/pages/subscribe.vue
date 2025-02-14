@@ -6,7 +6,7 @@
         <div class="c7qcc">
           <section>
             <!-- Page title -->
-            <h1 class="cpynq cme53 ciz93">Never miss an update ✨</h1>
+            <h1 class="cpynq cme53 ciz93">{{ $t('never_miss_an_update') }} ✨</h1>
             <!-- Page content -->
             <div class="cxslc c2bb0 cr8w3">
               <p class="c5rvt">
@@ -78,10 +78,12 @@
                     <input
                       type="email"
                       class="c899y c5mn7 c76s4 c8pgj c4udf"
-                      placeholder="Your email"
-                      aria-label="Your email…"
+                      :placeholder="$t('your_email')"
+                      :aria-label="`${$t('your_email')}...`"
                     />
-                    <button class="cwlj7 czzu3 craoz chuke">Subscribe</button>
+                    <button class="cwlj7 czzu3 craoz chuke">
+                      {{ $t("subscribe") }}
+                    </button>
                   </div>
                   <!-- Success message -->
                   <!-- <p class="text-xs text-slate-500 mt-3 italic">Thanks for subscribing!</p> -->
@@ -97,7 +99,7 @@
                       height="24"
                     />
                   </div>
-                  <div class="c2bb0 cme8e c8r41">Join 100K+ developers.</div>
+                  <div class="c2bb0 cme8e c8r41">{{ $t('subscribe_and_grow_with_us') }}</div>
                 </div>
               </div>
             </div>

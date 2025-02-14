@@ -1,8 +1,12 @@
 <template>
   <div class="cfup8 c0bc4 c8r41 cfwvb">
-    <span class="cursor-pointer" @click="toggleMode">
-      <component :is="colorMode.preference === 'dark' ? DarkMode : LightMode" />
-    </span>
+    <ClientOnly>
+      <span class="cursor-pointer" @click="toggleMode">
+        <component
+          :is="colorMode.preference === 'light' ? LightMode : DarkMode"
+        />
+      </span>
+    </ClientOnly>
   </div>
 </template>
 

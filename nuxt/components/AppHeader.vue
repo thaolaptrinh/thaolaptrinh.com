@@ -6,7 +6,9 @@
         <form class="cm8gy c8pgj">
           <div class="cnxqt cfwvb">
             <div class="c8pgj">
-              <label class="c4g5b cme8e chipd" for="search">Search</label>
+              <label class="c4g5b cme8e chipd" for="search">{{
+                $t("search")
+              }}</label>
               <div class="c5a0p c5c77 cfwvb">
                 <input
                   id="search"
@@ -31,13 +33,33 @@
         </form>
 
         <!-- Color mode toggle -->
-       <app-color-mode-toggle/>
+        <app-color-mode-toggle />
 
         <!-- Button -->
         <div>
-          <a class="cwlj7 c0kjz czzu3 csfon" href="subscribe.html">Subscribe</a>
+          <nuxt-link class="cwlj7 c0kjz czzu3 csfon" to="/subscribe">
+            {{ $t("subscribe") }}
+          </nuxt-link>
         </div>
+
+        <select
+          class="c899y csfon !pr-7 !py-[6px] cursor-pointer"
+          v-model="locale"
+          @change="$event.target.blur()"
+        >
+          <option
+            v-for="locale in $i18n.availableLocales"
+            :key="`locale-${locale}`"
+            :value="locale"
+          >
+            {{ locale }}
+          </option>
+        </select>
       </div>
     </div>
   </header>
 </template>
+
+<script setup>
+const { locale } = useI18n({ useScope: "global" });
+</script>

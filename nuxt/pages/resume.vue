@@ -5,12 +5,12 @@
       <div class="c8b8k">
         <section>
           <!-- Page title -->
-          <h1 class="cpynq c1rrq ciz93">My resume</h1>
+          <h1 class="cpynq c1rrq ciz93">{{ $t('my_resume') }}</h1>
           <!-- Page content -->
           <div class="cxslc c2bb0 cjrdl">
             <!-- Education -->
             <div class="cr8w3">
-              <h2 class="cxmc9 cg0ht cpynq cjvvo">Education</h2>
+              <h2 class="cxmc9 cg0ht cpynq cjvvo">{{ $t('education') }}</h2>
               <ul class="cr8w3">
                 <!-- Item -->
                 <li class="c5c77 cpnf3" v-for="(item, key) in education" :key>

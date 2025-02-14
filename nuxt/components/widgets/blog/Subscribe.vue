@@ -13,8 +13,8 @@
       </div>
     </div>
     <div class="c41ht cpl46">
-      <div class="cpynq c670g c0kco">Never miss an update!</div>
-      <p class="cxslc c2bb0 cme8e">Subscribe and join 100K+ developers.</p>
+      <div class="cpynq c670g c0kco">{{ $t('never_miss_an_update') }}</div>
+      <p class="cxslc c2bb0 cme8e">{{ $t('subscribe_and_grow_with_us') }}</p>
     </div>
     <form>
       <div class="c4udf">
@@ -23,11 +23,11 @@
           id="newsletter"
           type="email"
           class="c899y c8pgj cfi31"
-          placeholder="Your email…"
+          :placeholder="`${$t('your_email')}...`"
         />
       </div>
       <button class="cwlj7 c0kjz czzu3 csfon c8pgj" type="submit">
-        Subscribe
+        {{ $t('subscribe') }}
       </button>
     </form>
   </div>

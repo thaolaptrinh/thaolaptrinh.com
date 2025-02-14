@@ -13,11 +13,10 @@
             >
             🤟
           </h1>
-          <img class="c8pgj" width="692" height="390"/>
           <!-- Page content -->
           <div class="cr8w3 c2bb0 cxslc">
             <div class="c9gi4">
-              <h2 class="cjvvo cpynq cg0ht cxmc9">Short Bio</h2>
+              <h2 class="cjvvo cpynq cg0ht cxmc9">{{ $t("short_bio") }}</h2>
               <p>
                 I'm a software engineer with more than 10 years of experience in
                 a variety of domains. For the past few years, I've focused on
@@ -31,7 +30,7 @@
               </p>
             </div>
             <div class="c9gi4">
-              <h2 class="cjvvo cpynq cg0ht cxmc9">Career</h2>
+              <h2 class="cjvvo cpynq cg0ht cxmc9">{{ $t('career') }}</h2>
               <p>
                 In my role as a Senior Software Engineer for Google Chrome, I am
                 responsible for developing and maintaining the
@@ -60,7 +59,7 @@
             <widgets-blog-experience :experience />
 
             <div class="c9gi4">
-              <h2 class="cjvvo cpynq cg0ht cxmc9">Let's Connect</h2>
+              <h2 class="cjvvo cpynq cg0ht cxmc9">{{ $t('let_connect') }}</h2>
               <p>
                 I'm excited to connect with others via
                 <a class="cnp10 chugl cm6cq" href="#0">email</a> and
