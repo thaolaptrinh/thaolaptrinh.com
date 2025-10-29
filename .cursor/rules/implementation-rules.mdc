@@ -1,0 +1,151 @@
+# 🚨 IMPLEMENTATION RULES - BẮT BUỘC TUÂN THỦ
+
+## ⚠️ QUY TẮC SỐ 1: LUÔN LUÔN FOLLOW PLAN.MD
+**TRƯỚC KHI LÀM BẤT CỨ VIỆC GÌ:**
+1. Đọc PLAN.md
+2. Xác định đang ở Phase nào, Step nào
+3. Follow CHÍNH XÁC từng checkbox trong step đó
+4. KHÔNG ĐƯỢC tự ý thay đổi hoặc skip steps
+
+## ❌ NGHIÊM CẤM:
+- ❌ KHÔNG tự viết code từ đầu khi PLAN yêu cầu clone template
+- ❌ KHÔNG skip bước "Clone & Setup Template"
+- ❌ KHÔNG bỏ qua bước "Review structure"
+- ❌ KHÔNG tự sáng tạo approach khác với PLAN
+- ❌ KHÔNG làm nhiều steps cùng lúc
+- ❌ KHÔNG rush - phải làm từng bước một
+
+## ✅ PROCESS BẮT BUỘC:
+
+### Phase 1: Frontend - Public Portfolio Pages
+
+**Step 1.1 - Clone & Setup Template (BẮT BUỘC LÀM TRƯỚC):**
+```
+1. Clone Nuxt UI Portfolio template vào project
+2. Study toàn bộ structure:
+   - Review pages/
+   - Review components/
+   - Review layouts/
+   - Review content/ (để hiểu data structure)
+3. XÓA Nuxt Content dependencies
+4. Tạo mock data files
+5. Setup Inspira UI (nếu cần)
+```
+
+**CHỈ SAU KHI HOÀN THÀNH Step 1.1, MỚI được làm Step 1.2!**
+
+**Step 1.2 - Design Homepage:**
+```
+1. Sử dụng components từ template đã clone
+2. Customize với mock data
+3. Beautify với Inspira UI
+4. Test responsive
+```
+
+**Cứ thế tiếp tục từng step một theo PLAN.md**
+
+## 📋 CHECKLIST TRƯỚC KHI CODE:
+
+Trước mỗi lần code, TỰ HỎI BẢN THÂN:
+- [ ] Tôi đã đọc PLAN.md chưa?
+- [ ] Tôi đang ở Phase nào, Step nào?
+- [ ] Step hiện tại yêu cầu gì?
+- [ ] Tôi có đang clone template như PLAN yêu cầu không?
+- [ ] Tôi có đang tự ý viết code thay vì dùng template không?
+- [ ] Tôi có đang skip steps không?
+
+## 🎯 TEMPLATE USAGE RULES:
+
+### Khi PLAN nói "Clone template":
+1. **BẮT BUỘC** clone template vào project
+2. **BẮT BUỘC** study structure trước
+3. **BẮT BUỘC** copy/reuse components từ template
+4. **KHÔNG ĐƯỢC** tự viết lại từ đầu
+
+### Khi PLAN nói "Customize":
+1. Giữ nguyên structure của template
+2. Chỉ modify data source (từ Nuxt Content → mock data)
+3. Chỉ modify styling/animations
+4. KHÔNG rebuild lại toàn bộ
+
+### Khi PLAN nói "Beautify với Inspira UI":
+1. Giữ nguyên layout của template
+2. Chỉ thêm animations từ Inspira UI
+3. Enhance UX, không rebuild
+
+## 🔄 WORKFLOW ĐÚNG:
+
+```
+1. Đọc PLAN.md Step hiện tại
+   ↓
+2. Nếu step yêu cầu clone template
+   ↓
+3. Clone template vào project
+   ↓
+4. Study structure (pages, components, layouts)
+   ↓
+5. Understand data structure
+   ↓
+6. Copy/reuse components từ template
+   ↓
+7. Customize với mock data
+   ↓
+8. Beautify với Inspira UI
+   ↓
+9. Test & verify
+   ↓
+10. Mark step as completed
+   ↓
+11. Move to next step
+```
+
+## ❌ WORKFLOW SAI (KHÔNG ĐƯỢC LÀM):
+
+```
+1. Đọc PLAN.md
+   ↓
+2. Nghĩ "à tôi code nhanh hơn"
+   ↓
+3. Tự viết code từ đầu  ← ❌ SAI
+   ↓
+4. Skip clone template  ← ❌ SAI
+   ↓
+5. Không follow structure của template  ← ❌ SAI
+```
+
+## 📝 DOCUMENTATION REQUIREMENTS:
+
+Khi code mỗi step:
+1. Comment rõ đang làm step nào trong PLAN
+2. Document những gì đã customize từ template
+3. Note những components nào được reuse từ template
+
+## 🚀 CURRENT STATUS TRACKING:
+
+**Phase hiện tại:** Phase 1
+**Step hiện tại:** Step 1.1 - Clone & Setup Template
+**Status:** In Progress
+
+**Checklist Step 1.1:**
+- [x] Clone template vào `.portfolio-template/`
+- [ ] Study toàn bộ structure
+- [ ] Copy components vào project
+- [ ] Remove Nuxt Content dependencies
+- [ ] Setup mock data structure
+- [ ] Test template components với mock data
+
+**CHƯA ĐƯỢC LÀM Step 1.2 cho đến khi Step 1.1 HOÀN THÀNH 100%!**
+
+## 💡 REMEMBER:
+
+> "Slow is smooth, smooth is fast"
+> 
+> Follow plan từng bước = Nhanh hơn là tự code và phải refactor sau!
+
+---
+
+**Nếu tôi vi phạm bất kỳ rule nào ở trên:**
+- User có quyền reject và yêu cầu làm lại
+- Tôi phải xin lỗi và follow đúng process
+- Không được argue hay justify việc không follow plan
+

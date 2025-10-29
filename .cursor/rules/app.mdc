@@ -1,0 +1,633 @@
+---
+alwaysApply: true
+---
+
+# Nuxt 4 + Vue 3 Development Rules
+
+Expert in: TypeScript, Nuxt 4, Vue 3 Composition API, Nuxt UI, Drizzle ORM, Better Auth, TipTap
+
+## 🎯 Core Principles
+
+1. **Follow PLAN.md strictly** - implement step by step, no skipping
+2. **Nuxt Auto-Imports** - Never manually import Vue APIs or Nuxt composables
+3. **No `@apply` directive** - pure CSS or Tailwind utility classes only
+4. **TypeScript strict mode** - type everything, prefer `type` over `interface`
+5. **Composition API only** - no Options API
+6. **Mobile-first responsive** - all layouts must work on mobile
+7. **Mock data in Phase 1-2** - backend integration in Phase 3-4
+
+## 📦 Tech Stack
+
+- **Framework**: Nuxt 4, Vue 3, TypeScript
+- **UI**: Nuxt UI v4, @nuxt/icon, Inspira UI patterns
+- **Styling**: Tailwind CSS v4
+- **Animations**: @vueuse/motion
+- **Auth**: Better Auth (GitHub OAuth only)
+- **Database**: Drizzle ORM + Turso (libsql)
+- **Editor**: TipTap
+- **Storage**: Cloudflare R2 (S3-compatible)
+- **Validation**: Zod + vee-validate
+- **State**: useState (Nuxt built-in)
+
+## 🚀 Nuxt 4 Auto-Imports
+
+### ✅ Auto-Imported (Never import manually):
+
+```typescript
+// Vue Reactivity
+ref, reactive, computed, readonly, toRef, toRefs, isRef, unref, shallowRef
+
+// Vue Lifecycle
+onMounted, onUnmounted, onBeforeMount, onBeforeUnmount, onUpdated, onBeforeUpdate
+
+// Vue Watchers  
+watch, watchEffect, watchPostEffect, watchSyncEffect
+
+// Vue Composition
+defineProps, defineEmits, defineExpose, withDefaults, useSlots, useAttrs
+
+// Nuxt Composables
+useRoute, useRouter, navigateTo, useFetch, useAsyncData, useState
+useSeoMeta, useHead, useCookie, useRequestHeaders, useRuntimeConfig
+createError, showError, clearError, useError
+
+// Your Composables (~/composables/*.ts)
+useBlogPosts, useProjects, useAuth // all auto-imported
+
+// Your Utils (~/utils/*.ts exports)
+cn // from utils/cn.ts
+
+// Components (~/components/**)
+// All components auto-imported - no import needed
+```
+
+### ❌ Must Import Manually:
+
+```typescript
+import { z } from 'zod'                    // Third-party libs
+import data from './data.json'             // JSON/asset files
+import { useWindowSize } from '@vueuse/core' // VueUse specific (if not auto-imported)
+```
+
+## 📝 File Naming Conventions
+
+```
+components/
+  ├── landing/Hero.vue              // PascalCase.vue
+  ├── ui/CustomButton.vue
+  
+pages/
+  ├── index.vue                     // kebab-case
+  ├── blog/[slug].vue
+  
+composables/
+  ├── useMockData.ts                // camelCase.ts, prefix 'use'
+  ├── useAuth.ts
+  
+utils/
+  ├── cn.ts                         // camelCase.ts
+  ├── format-date.ts
+  
+middleware/
+  ├── auth.ts                       // kebab-case.ts
+```
+
+## 🏗️ Component Structure
+
+```vue
+<script setup lang="ts">
+// 1. Third-party imports only
+import { z } from 'zod'
+
+// 2. Type definitions
+type Props = {
+  title: string
+  count?: number
+}
+
+// 3. Props & Emits  
+const props = defineProps<Props>()
+const emit = defineEmits<{
+  update: [value: string]
+  close: []
+}>()
+
+// 4. Composables (auto-imported)
+const route = useRoute()
+const { data } = useBlogPosts()
+
+// 5. Reactive state
+const isOpen = ref(false)
+const filtered = computed(() => data.value.filter(x => x.active))
+
+// 6. Methods
+const handleClick = () => {
+  isOpen.value = !isOpen.value
+  emit('update', 'value')
+}
+
+// 7. Lifecycle
+onMounted(() => {
+  console.log('Component mounted')
+})
+
+// 8. Watchers (if needed)
+watch(() => props.count, (newVal) => {
+  console.log('Count changed:', newVal)
+})
+</script>
+
+<template>
+  <div class="container mx-auto px-4">
+    <!-- Use Tailwind classes directly -->
+    <UButton @click="handleClick">
+      {{ title }}
+    </UButton>
+  </div>
+</template>
+
+<style scoped>
+/* Pure CSS only - NO @apply */
+.container {
+  max-width: 1200px;
+}
+
+.custom-hover:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+</style>
+```
+
+## 🎨 UI & Styling Rules
+
+### Nuxt UI Components (Primary)
+
+```vue
+<!-- Use Nuxt UI components for everything -->
+<UButton variant="solid" size="lg">Click</UButton>
+<UCard>Content</UCard>
+<UInput v-model="value" />
+<UIcon name="i-lucide-arrow-right" />
+<UBadge>New</UBadge>
+<UModal v-model="isOpen">...</UModal>
+```
+
+### Styling Guidelines
+
+```vue
+<!-- ✅ GOOD: Tailwind utility classes -->
+<div class="flex items-center gap-4 p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg">
+
+<!-- ✅ GOOD: Pure CSS in <style> -->
+<style scoped>
+.custom-class {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+</style>
+
+<!-- ❌ BAD: Using @apply -->
+<style scoped>
+.custom-class {
+  @apply flex gap-4 p-6; /* NO! */
+}
+</style>
+```
+
+### Responsive Design
+
+```vue
+<!-- Mobile-first approach -->
+<div class="w-full md:w-1/2 lg:w-1/3">
+  <!-- Mobile: full width -->
+  <!-- Tablet (md): half width -->
+  <!-- Desktop (lg): one-third width -->
+</div>
+```
+
+## 🎭 Animations with Motion
+
+```vue
+<script setup lang="ts">
+// Motion component is auto-imported from @vueuse/motion
+</script>
+
+<template>
+  <!-- Fade in from bottom -->
+  <Motion
+    :initial="{ opacity: 0, transform: 'translateY(20px)' }"
+    :animate="{ opacity: 1, transform: 'translateY(0)' }"
+    :transition="{ duration: 0.5 }"
+  >
+    <div>Content</div>
+  </Motion>
+
+  <!-- Staggered list animations -->
+  <Motion
+    v-for="(item, i) in items"
+    :key="item.id"
+    :initial="{ opacity: 0, transform: 'translateY(20px)' }"
+    :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
+    :transition="{ delay: i * 0.1, duration: 0.5 }"
+    :in-view-options="{ once: true }"
+  >
+    <div>{{ item.title }}</div>
+  </Motion>
+</template>
+```
+
+## 📡 Data Fetching
+
+```typescript
+// For mock data (Phase 1-2)
+const { data, getPublished, getBySlug } = useBlogPosts()
+
+// For API calls (Phase 3-4)
+const { data, pending, error, refresh } = await useAsyncData(
+  'blog-posts',
+  () => $fetch('/api/blog')
+)
+
+// With useFetch (shorthand)
+const { data } = await useFetch('/api/blog')
+
+// Error handling
+if (error.value) {
+  showError({
+    statusCode: error.value.statusCode,
+    statusMessage: error.value.message
+  })
+}
+```
+
+## 🛣️ Routing & Navigation
+
+```typescript
+// Get current route
+const route = useRoute()
+const slug = route.params.slug
+
+// Programmatic navigation
+await navigateTo('/blog')
+await navigateTo(`/blog/${slug}`)
+await navigateTo({ path: '/blog', query: { page: 1 } })
+
+// External links
+await navigateTo('https://example.com', { external: true })
+```
+
+## 🔐 SEO & Meta Tags
+
+```typescript
+// In page component
+useSeoMeta({
+  title: post.seo?.title || post.title,
+  description: post.seo?.description || post.excerpt,
+  ogTitle: post.seo?.title || post.title,
+  ogDescription: post.seo?.description || post.excerpt,
+  ogImage: post.featured_image,
+  twitterCard: 'summary_large_image'
+})
+
+// Dynamic OG Image
+defineOgImage({
+  url: post.featured_image
+})
+```
+
+## 🖼️ Image Optimization
+
+```vue
+<template>
+  <!-- Use NuxtImg for automatic optimization -->
+  <NuxtImg
+    :src="post.featured_image"
+    :alt="post.title"
+    width="800"
+    height="400"
+    class="rounded-lg object-cover"
+    loading="lazy"
+  />
+</template>
+```
+
+## 📂 Server API Routes
+
+```typescript
+// server/api/blog/index.get.ts
+export default defineEventHandler(async (event) => {
+  // Query params
+  const query = getQuery(event)
+  
+  // Database query (Phase 3)
+  const posts = await db.select()
+    .from(blogPosts)
+    .where(eq(blogPosts.status, 'published'))
+    .orderBy(desc(blogPosts.publishedAt))
+  
+  return posts
+})
+
+// server/api/blog/[id].post.ts
+export default defineEventHandler(async (event) => {
+  // Validate with Zod
+  const body = await readBody(event)
+  const validated = blogSchema.parse(body)
+  
+  // Insert to DB
+  const result = await db.insert(blogPosts).values(validated)
+  
+  return result
+})
+```
+
+## 🛡️ Error Handling
+
+```typescript
+// In components/pages
+try {
+  const data = await $fetch('/api/endpoint')
+} catch (err) {
+  const error = err as Error
+  console.error('Fetch error:', error.message)
+  
+  // Show user-friendly message
+  throw createError({
+    statusCode: 500,
+    statusMessage: 'Failed to load data'
+  })
+}
+
+// In API routes
+export default defineEventHandler(async (event) => {
+  try {
+    // ... logic
+  } catch (error) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Invalid request'
+    })
+  }
+})
+```
+
+## 🎯 TypeScript Best Practices
+
+```typescript
+// ✅ Use types, not interfaces
+type User = {
+  id: number
+  name: string
+  email: string
+}
+
+// ✅ Use const objects instead of enums
+const STATUS = {
+  DRAFT: 'draft',
+  PUBLISHED: 'published',
+  ARCHIVED: 'archived'
+} as const
+
+type Status = typeof STATUS[keyof typeof STATUS]
+
+// ✅ Type composable returns
+export const useBlogPosts = () => {
+  const posts = ref<BlogPost[]>([])
+  
+  const getPublished = (): BlogPost[] => {
+    return posts.value.filter(p => p.status === 'published')
+  }
+  
+  return {
+    posts: readonly(posts),
+    getPublished
+  }
+}
+
+// ✅ Type component props
+type Props = {
+  title: string
+  count?: number
+  items: Array<{ id: number; name: string }>
+}
+
+const props = defineProps<Props>()
+```
+
+## ✅ Testing & Verification
+
+### Dev Server
+- **Port**: `http://localhost:3000/` (default Nuxt dev server)
+- **KHÔNG CẦN restart**: Dev server tự reload khi code thay đổi
+- **Check trực tiếp**: Dùng `curl http://localhost:3000/your-page` để test
+- **Hoặc**: Mở browser http://localhost:3000/
+
+### ESLint Configuration
+
+**Config trong `nuxt.config.ts`:**
+
+```typescript
+eslint: {
+  config: {
+    stylistic: {
+      indent: 2,
+      quotes: 'single',
+      semi: false,
+      commaDangle: 'never',
+      braceStyle: '1tbs',
+      arrowParens: false
+    }
+  }
+}
+```
+
+**Config trong `eslint.config.mjs` (ESLint 9+ flat config):**
+
+```javascript
+// @ts-check
+import withNuxt from './.nuxt/eslint.config.mjs'
+
+export default withNuxt(
+  {
+    ignores: [
+      '.portfolio-template/**',
+      'node_modules/**',
+      '.nuxt/**',
+      '.output/**',
+      'dist/**',
+      '.cache/**'
+    ]
+  },
+  {
+    rules: {
+      // TypeScript
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': ['warn', {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_'
+      }],
+
+      // Vue
+      'vue/multi-word-component-names': 'off',
+      'vue/no-v-html': 'warn',
+      'vue/require-default-prop': 'off',
+      'vue/html-self-closing': 'off',
+      'vue/max-attributes-per-line': 'off',
+      'vue/first-attribute-linebreak': 'off',
+      'vue/html-closing-bracket-newline': 'off',
+
+      // General
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'no-debugger': 'warn'
+    }
+  }
+)
+```
+
+**Package.json scripts:**
+
+```json
+{
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "nuxt typecheck"
+  }
+}
+```
+
+**Check linter:**
+
+```bash
+# Check lint errors
+bun run lint
+
+# Auto-fix lint errors
+bun run lint:fix
+
+# Check TypeScript errors
+bun run typecheck
+```
+
+**ESLint ignore:**
+- ESLint 9+ không dùng `.eslintignore` nữa
+- Dùng `ignores` array trong `eslint.config.mjs` để ignore folders
+- Luôn ignore: `node_modules/`, `.nuxt/`, `.output/`, `.portfolio-template/`
+
+### Pre-Commit Checklist
+
+```bash
+# 1. No linter errors
+bun run lint
+
+# 2. No TypeScript errors
+bun run build
+
+# 3. Test in browser (http://localhost:3000/)
+# - Check mobile view (F12 > Device toolbar)
+# - Test dark mode toggle
+# - Verify animations work
+# - Check all links work
+
+# 4. Verify
+# - [ ] No console errors
+# - [ ] Images load
+# - [ ] Responsive on mobile/tablet/desktop
+# - [ ] Dark mode works
+# - [ ] SEO meta tags set
+```
+
+## 📚 Common Patterns
+
+### Composable for Mock Data
+
+```typescript
+// composables/useMockData.ts
+import blogPostsData from '../../mock-data/blog-posts.json'
+
+export const useBlogPosts = () => {
+  const posts = blogPostsData
+  
+  return {
+    data: posts,
+    getPublished: () => posts.filter(p => p.status === 'published'),
+    getBySlug: (slug: string) => posts.find(p => p.slug === slug),
+    getByCategory: (cat: string) => posts.filter(p => p.category === cat),
+    getLatest: (limit = 3) => posts.slice(0, limit)
+  }
+}
+
+// Usage in component (no import needed)
+const { getPublished, getBySlug } = useBlogPosts()
+```
+
+### Form with Validation
+
+```vue
+<script setup lang="ts">
+import { z } from 'zod'
+
+const schema = z.object({
+  email: z.string().email('Invalid email'),
+  password: z.string().min(8, 'Min 8 characters')
+})
+
+type FormData = z.infer<typeof schema>
+
+const form = ref<FormData>({
+  email: '',
+  password: ''
+})
+
+const errors = ref<Partial<Record<keyof FormData, string>>>({})
+
+const handleSubmit = async () => {
+  try {
+    const validated = schema.parse(form.value)
+    await $fetch('/api/auth/login', {
+      method: 'POST',
+      body: validated
+    })
+    await navigateTo('/dashboard')
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      errors.value = err.flatten().fieldErrors
+    }
+  }
+}
+</script>
+```
+
+### Protected Middleware
+
+```typescript
+// middleware/auth.ts
+export default defineNuxtRouteMiddleware((to, from) => {
+  const { isAuthenticated } = useAuth()
+  
+  if (!isAuthenticated.value && to.path.startsWith('/admin')) {
+    return navigateTo('/auth/login')
+  }
+})
+```
+
+## 🎓 Key Reminders
+
+- **Auto-imports**: Don't import `ref`, `computed`, `useRoute`, components, or composables
+- **No @apply**: Use pure CSS or Tailwind classes directly
+- **Nuxt UI first**: Use `<UButton>`, `<UCard>`, etc. - not custom components
+- **Types everywhere**: Type props, emits, returns, and variables
+- **Mobile-first**: Test on mobile viewport first
+- **Follow PLAN.md**: Implement step-by-step, don't skip phases
+
+## 📖 Official Docs
+
+- **Nuxt**: https://nuxt.com/docs
+- **Nuxt UI**: https://ui.nuxt.com
+- **Vue 3**: https://vuejs.org/guide
+- **VueUse**: https://vueuse.org
+- **Drizzle ORM**: https://orm.drizzle.team
+- **Better Auth**: https://better-auth.com
+- **TipTap**: https://tiptap.dev

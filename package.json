@@ -1,0 +1,34 @@
+{
+  "name": "thaolaptrinh-com",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@nuxt/content": "3.7.1",
+    "@nuxt/eslint": "1.10.0",
+    "@nuxt/image": "1.11.0",
+    "@nuxt/ui": "4.1.0",
+    "better-sqlite3": "^12.4.1",
+    "eslint": "^9.0.0",
+    "nuxt": "^4.2.0",
+    "typescript": "^5.6.3",
+    "vue": "^3.5.22",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.71",
+    "@iconify-json/simple-icons": "^1.2.56",
+    "@vueuse/nuxt": "^14.0.0",
+    "motion-v": "^1.7.4",
+    "nuxt-og-image": "^5.1.12"
+  }
+}
