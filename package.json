@@ -1,5 +1,5 @@
 {
-  "name": "thaolaptrinh-com",
+  "name": "thaolaptrinh.com",
   "type": "module",
   "private": true,
   "scripts": {
@@ -13,22 +13,25 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
+    "@iconify-json/lucide": "^1.2.71",
+    "@iconify-json/simple-icons": "^1.2.56",
     "@nuxt/content": "3.7.1",
-    "@nuxt/eslint": "1.10.0",
+    "@nuxt/icon": "2.1.0",
     "@nuxt/image": "1.11.0",
     "@nuxt/ui": "4.1.0",
+    "@vueuse/nuxt": "^14.0.0",
     "better-sqlite3": "^12.4.1",
-    "eslint": "^9.0.0",
+    "motion-v": "^1.7.4",
     "nuxt": "^4.2.0",
-    "typescript": "^5.6.3",
+    "nuxt-og-image": "^5.1.12",
     "vue": "^3.5.22",
     "vue-router": "^4.6.3"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.71",
-    "@iconify-json/simple-icons": "^1.2.56",
-    "@vueuse/nuxt": "^14.0.0",
-    "motion-v": "^1.7.4",
-    "nuxt-og-image": "^5.1.12"
-  }
+    "@nuxt/eslint": "1.10.0",
+    "eslint": "^9.38.0",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.1.2"
+  },
+  "packageManager": "pnpm@10.20.0"
 }

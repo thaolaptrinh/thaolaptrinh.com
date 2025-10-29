@@ -1,19 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
-
   modules: [
-    '@nuxt/content',
     '@nuxt/eslint',
-    '@nuxt/image',
     '@nuxt/ui',
+    '@nuxt/image',
+    '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-og-image',
     'motion-v/nuxt',
+    '@nuxt/icon'
   ],
+  devtools: { enabled: true },
 
   css: ['~/assets/css/main.css'],
+  compatibilityDate: '2025-07-15',
 
   nitro: {
     prerender: {
@@ -24,6 +24,12 @@ export default defineNuxtConfig({
     }
   },
 
+  vite: {
+    build: {
+      sourcemap: false
+    }
+  },
+
   eslint: {
     config: {
       stylistic: {
@@ -31,5 +37,5 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
-  },
+  }
 })

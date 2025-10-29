@@ -1,27 +1,36 @@
 title: About Me
-description: Learn more about my journey as a Boston-based UX/UI Designer & Front-End Developer, my design philosophy, and my passion for crafting intuitive digital experiences.
+description: Learn more about my journey as a Full-stack Web Developer, my development philosophy, and my passion for building scalable web applications with modern PHP and JavaScript technologies.
 content: |
-  Hi, I'm **Emma Thompson**, a UX/UI Designer and Front-End Developer based right here in Boston. For the past six years, I've been immersed in the world of digital product creation, focusing on building experiences that are not just functional, but genuinely intuitive and engaging for users.
+  Hi, I'm **Thao Nguyen**, a Full-stack Web Developer passionate about building modern web applications across the entire stack. I work with both PHP and JavaScript ecosystems to deliver scalable, maintainable solutions.
 
-  My path started at **Boston University**, where I earned a degree in Interactive Design. It was there I discovered my dual passion for the visual language of design and the logical puzzle of code. Since then, I've honed my skills in both areas, believing that the best digital products are born from a deep understanding of both aesthetics and implementation.
+  My development journey has led me to master multiple technologies on both sides of the web stack. I believe the best web applications are built with deep understanding of both frontend user experience and backend architecture.
 
-  ### My Design Philosophy
+  ### My Tech Stack
 
-  My design philosophy is rooted in **empathy** and **problem-solving**. I believe great design starts with understanding the 'why' – the user's needs, motivations, and pain points. I use research, iterative prototyping (often with tools like Figma), and user testing to ensure the solutions I build are truly effective.
+  **Backend & PHP Ecosystem:**
+  - **Laravel** - Building robust RESTful APIs and MVC applications
+  - **FilamentPHP** - Crafting beautiful admin panels with ease
+  - **Livewire** - Creating reactive components without leaving PHP
 
-  I strive to create interfaces that feel effortless, where functionality and beauty work hand-in-hand. Whether I'm crafting pixel-perfect UIs or writing clean Vue.js/Nuxt.js code, my focus is always on creating value for the end-user.
+  **Frontend & JavaScript Ecosystem:**
+  - **Vue.js** - Building reactive, component-based user interfaces
+  - **Nuxt** - Developing server-side rendered and static web applications
+  - **InertiaJS** - Bridging Laravel backend with Vue frontend seamlessly
+
+  ### My Development Philosophy
+
+  My development philosophy centers on **clean code**, **scalability**, and **maintainability**. I believe great applications start with solid architecture and attention to detail. Whether I'm designing database schemas, writing API endpoints, or crafting responsive UIs, I always think about long-term maintainability and performance.
+
+  I leverage modern development practices like version control, testing, and CI/CD to ensure quality code delivery. My goal is to write code that not only works today but can be easily extended and maintained in the future.
 
   ### What Drives Me
 
-  What keeps me excited about this work is the constant learning and the challenge of translating complex ideas into simple, elegant solutions. There's nothing more rewarding than seeing a design come to life and knowing it's making someone's digital interaction easier or more enjoyable.
+  What excites me most about web development is the ability to solve real-world problems with code. From building content management systems to crafting interactive user interfaces, each project presents unique challenges that push me to learn and grow.
 
-  ### Beyond the Screen
+  The web platform is constantly evolving, and I love staying current with new tools and best practices in both PHP and JavaScript ecosystems.
 
-  When I'm not designing or coding, you might find me exploring Boston's latest coffee shops, hiking nearby trails, or occasionally contributing to open-source projects.
+  ### Beyond Coding
+
+  When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects, and sharing knowledge with the developer community.
 
   Thanks for stopping by. Feel free to browse my [projects](/projects) or [get in touch](/#contact) if you'd like to collaborate!
-images:
-  - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My coffee workspace
-  - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My trip to Tokyo

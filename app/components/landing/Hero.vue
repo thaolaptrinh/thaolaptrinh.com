@@ -61,6 +61,31 @@ defineProps<{
       >
         {{ page.title }}
       </Motion>
+
+      <Motion
+        v-if="page.role"
+        :initial="{
+          scale: 1.1,
+          opacity: 0,
+          filter: 'blur(20px)'
+        }"
+        :animate="{
+          scale: 1,
+          opacity: 1,
+          filter: 'blur(0px)'
+        }"
+        :transition="{
+          duration: 0.6,
+          delay: 0.2
+        }"
+      >
+        <UBadge
+          color="primary"
+          variant="soft"
+          size="lg"
+          :label="page.role"
+        />
+      </Motion>
     </template>
 
     <template #description>
@@ -133,7 +158,6 @@ defineProps<{
         <Motion
           v-for="(link, index) of footer?.links"
           :key="index"
-
           :initial="{
             scale: 1.1,
             opacity: 0,
@@ -149,14 +173,13 @@ defineProps<{
             delay: 0.5 + index * 0.1
           }"
         >
-          <UButton
-            v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
-          />
+          <UButton v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }" />
         </Motion>
       </div>
     </template>
 
     <UMarquee
+      v-if="page.hero.images && page.hero.images.length"
       pause-on-hover
       class="py-2 -mx-8 sm:-mx-12 lg:-mx-16 [--duration:40s]"
     >
