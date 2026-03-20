@@ -8,6 +8,7 @@ export default defineNuxtConfig({
 		"nuxt-studio",
 		"nuxt-og-image",
 		"@nuxtjs/sitemap",
+		"@vercel/analytics",
 	],
 
 	css: ["~/assets/css/main.css"],
