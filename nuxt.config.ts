@@ -56,8 +56,13 @@ export default defineNuxtConfig({
 		sources: ["/api/__sitemap__/urls"],
 	},
 
+	routeRules: {
+		"/": { prerender: true },
+		"/articles/**": { prerender: true },
+	},
+
 	studio: {
-		dev: true,
+		dev: process.env.NODE_ENV === "development",
 		route: "/_studio",
 		repository: {
 			provider: "github",
