@@ -25,7 +25,7 @@ export default defineNuxtConfig({
 		build: {
 			markdown: {
 				highlight: {
-					theme: "github-dark",
+					theme: "github-dark-high-contrast",
 					langs: [
 						"php",
 						"js",
