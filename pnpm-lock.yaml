@@ -47,6 +47,9 @@ importers:
       nuxt-studio:
         specifier: ^1.5.1
         version: 1.5.1(db0@0.3.4(better-sqlite3@12.8.0))(ioredis@5.10.1)(magicast@0.5.2)(vue@3.5.30(typescript@5.9.3))
+      rehype-external-links:
+        specifier: ^3.0.0
+        version: 3.0.0
       satori:
         specifier: ^0.26.0
         version: 0.26.0
