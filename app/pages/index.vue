@@ -29,9 +29,9 @@ const { data: articles } = await useAsyncData("home:articles", async () => {
   <div class="min-h-screen text-[#e5e5e5]">
     <header class="py-8">
       <nav class="max-w-2xl mx-auto px-6 flex items-center justify-between">
-        <span class="inline-block overflow-hidden whitespace-nowrap border-r border-neutral-500 text-sm text-neutral-500 font-mono animate-[typing-loop_5s_infinite,blink-caret_0.75s_step-end_infinite]">thaolaptrinh.com</span>
+        <span class="inline-block overflow-hidden whitespace-nowrap border-r border-neutral-400 text-sm text-neutral-400 font-mono animate-[typing-loop_5s_infinite,blink-caret_0.75s_step-end_infinite]">thaolaptrinh.com</span>
         <a href="https://github.com/thaolaptrinh" target="_blank" rel="noopener"
-          class="text-sm text-neutral-500 hover:text-neutral-300 transition-colors">
+          class="text-sm text-neutral-400 hover:text-neutral-300 transition-colors">
           github
         </a>
       </nav>
@@ -60,27 +60,27 @@ const { data: articles } = await useAsyncData("home:articles", async () => {
                 <time
                   v-if="article.date"
                   :datetime="new Date(article.date).toISOString()"
-                  class="text-xs text-neutral-600 font-mono"
+                  class="text-xs text-neutral-400 font-mono"
                 >
                   {{
                     new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
                   }}
                 </time>
-                <span v-if="article.category" class="text-xs text-neutral-500 font-mono">
+                <span v-if="article.category" class="text-xs text-neutral-400 font-mono">
                   {{ article.category }}
                 </span>
               </div>
               <h2 class="text-[#e5e5e5] text-lg leading-snug group-hover:text-neutral-400 transition-colors">
                 {{ article.title }}
               </h2>
-              <p v-if="article.description" class="text-neutral-500 text-sm mt-2 line-clamp-2">
+              <p v-if="article.description" class="text-neutral-400 text-sm mt-2 line-clamp-2">
                 {{ article.description }}
               </p>
             </NuxtLink>
           </article>
         </div>
 
-        <div v-if="!articles?.length" class="text-neutral-600 text-sm">
+        <div v-if="!articles?.length" class="text-neutral-400 text-sm">
           No articles yet.
         </div>
       </section>
@@ -88,7 +88,7 @@ const { data: articles } = await useAsyncData("home:articles", async () => {
 
     <footer class="py-12">
       <div class="max-w-2xl mx-auto px-6">
-        <p class="text-xs text-neutral-600">
+        <p class="text-xs text-neutral-400">
           © {{ currentYear }} Thao Nguyen Van
         </p>
       </div>

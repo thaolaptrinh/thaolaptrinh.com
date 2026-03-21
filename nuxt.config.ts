@@ -3,6 +3,7 @@ export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
 	modules: [
+		"@nuxt/fonts",
 		"@nuxt/ui",
 		"@nuxt/content",
 		"nuxt-studio",
@@ -12,6 +13,13 @@ export default defineNuxtConfig({
 	],
 
 	css: ["~/assets/css/main.css"],
+
+	fonts: {
+		families: [
+			{ name: "IBM Plex Sans", provider: "google", weights: [400, 500] },
+			{ name: "IBM Plex Mono", provider: "google", weights: [400] },
+		],
+	},
 
 	content: {
 		build: {

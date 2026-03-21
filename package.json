@@ -34,6 +34,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.8",
+		"@nuxt/fonts": "^0.14.0",
 		"@nuxtjs/sitemap": "^7.6.0",
 		"typescript": "^5.9.3",
 		"vue-tsc": "^2.2.12"

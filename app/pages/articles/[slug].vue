@@ -66,7 +66,7 @@ useHead({
   <div class="min-h-screen text-[#e5e5e5]">
     <header class="py-6">
       <nav class="max-w-2xl mx-auto px-6">
-        <NuxtLink to="/" class="inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-[#e5e5e5] transition-colors">
+        <NuxtLink to="/" class="inline-flex items-center gap-1.5 text-sm text-neutral-400 hover:text-[#e5e5e5] transition-colors">
           <UIcon name="i-lucide-arrow-left" class="size-3.5" />
           Back
         </NuxtLink>
@@ -79,11 +79,11 @@ useHead({
           <div class="flex items-center gap-3 mb-4">
             <time
               :datetime="articleDate.toISOString()"
-              class="text-xs text-neutral-500 font-mono"
+              class="text-xs text-neutral-400 font-mono"
             >
               {{ articleDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) }}
             </time>
-            <span v-if="article.category" class="text-xs text-neutral-600 font-mono">
+            <span v-if="article.category" class="text-xs text-neutral-400 font-mono">
               {{ article.category }}
             </span>
           </div>
@@ -92,7 +92,7 @@ useHead({
             <span
               v-for="tag in article.tags"
               :key="tag"
-              class="text-xs text-neutral-600 font-mono border border-neutral-800 px-2 py-0.5 rounded"
+              class="text-xs text-neutral-400 font-mono border border-neutral-700 px-2 py-0.5 rounded"
             >
               {{ tag }}
             </span>
@@ -106,7 +106,7 @@ useHead({
     </main>
 
     <footer class="py-8">
-      <div class="max-w-2xl mx-auto px-6 text-xs text-neutral-600">
+      <div class="max-w-2xl mx-auto px-6 text-xs text-neutral-400">
         © {{ currentYear }} Thao Nguyen Van
       </div>
     </footer>
