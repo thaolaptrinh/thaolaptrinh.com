@@ -61,6 +61,12 @@ export default defineNuxtConfig({
 		"/articles/**": { prerender: true },
 	},
 
+	nitro: {
+		prerender: {
+			crawlLinks: true,
+		},
+	},
+
 	studio: {
 		dev: process.env.NODE_ENV === "development",
 		route: "/_studio",
