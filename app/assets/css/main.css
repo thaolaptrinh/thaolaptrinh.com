@@ -1,8 +1,5 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
-@import "@fontsource/ibm-plex-sans/400.css";
-@import "@fontsource/ibm-plex-sans/500.css";
-@import "@fontsource/ibm-plex-mono/400.css";
 
 @source "../../../content/**/*";
 
@@ -49,5 +46,21 @@ pre,
 	}
 	50% {
 		border-color: rgb(115 115 115);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	@keyframes typing-loop {
+		0%,
+		100% {
+			width: 16ch;
+		}
+	}
+
+	@keyframes blink-caret {
+		0%,
+		100% {
+			border-color: transparent;
+		}
 	}
 }
