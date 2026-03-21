@@ -24,6 +24,14 @@ export default defineNuxtConfig({
 	content: {
 		build: {
 			markdown: {
+				rehypePlugins: {
+					"rehype-external-links": {
+						options: {
+							target: "_blank",
+							rel: ["noopener", "noreferrer"],
+						},
+					},
+				},
 				highlight: {
 					theme: "github-dark-high-contrast",
 					langs: [
@@ -76,7 +84,7 @@ export default defineNuxtConfig({
 	},
 
 	studio: {
-		dev: process.env.NODE_ENV === "development",
+		dev: process.env.STUDIO === "true",
 		route: "/_studio",
 		repository: {
 			provider: "github",
