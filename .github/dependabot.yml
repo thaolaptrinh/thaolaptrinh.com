@@ -1,0 +1,40 @@
+version: 2
+updates:
+  # npm dependencies (Dependabot auto-detects pnpm via pnpm-lock.yaml)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    groups:
+      prod-dependencies:
+        dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
+      dev-dependencies:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
+    # Major version bumps open as separate PRs for manual review
+    # (e.g. TypeScript 5->6, vue-router 4->5 can be breaking)
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - "dependencies"
+  # GitHub Actions workflows (dormant until workflows are added)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    groups:
+      all-actions:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "chore(ci)"
+    labels:
+      - "dependencies"
