@@ -1,75 +1,82 @@
-# Nuxt Minimal Starter
+# thaolaptrinh.com
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Personal blog of [Thao Nguyen Van](https://thaolaptrinh.com) — built with Nuxt 4, Nuxt Content v3, and Tailwind CSS v4.
+
+## Tech Stack
+
+- **Framework**: [Nuxt 4](https://nuxt.com) (statically generated)
+- **Content**: [Nuxt Content v3](https://content.nuxt.com) with Markdown articles
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com) via [@nuxt/ui](https://ui.nuxt.com)
+- **Fonts**: IBM Plex Sans / IBM Plex Mono via [@nuxt/fonts](https://fonts.nuxt.com)
+- **SEO**: [nuxt-og-image](https://nuxt-og-image.vercel.app), [@nuxtjs/sitemap](https://nuxtseo.com), RSS feed
+- **Tooling**: [Biome](https://biomejs.dev) (format/lint), TypeScript, pnpm
 
 ## Setup
 
-Make sure to install dependencies:
-
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Development
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+pnpm dev   # http://localhost:3000
 ```
 
-## Production
-
-Build the application for production:
+Studio (visual content editor) is available at `/_studio` when running with `STUDIO=true`:
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+STUDIO=true pnpm dev
 ```
 
-Locally preview production build:
+## Build & Preview
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+pnpm build       # build for production
+pnpm generate    # generate static site
+pnpm preview     # preview production build
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Code Quality
+
+```bash
+pnpm format      # format & auto-fix with Biome
+pnpm lint        # check with Biome
+pnpm typecheck   # TypeScript type checking
+```
+
+## Project Structure
+
+```
+app/
+  assets/css/     # Global styles
+  components/     # Auto-imported Vue components
+  pages/          # File-based routing
+    index.vue     # Home page
+    articles/[slug].vue  # Article page
+content/
+  articles/       # Markdown articles
+content.config.ts # Content collection schema (Zod)
+server/
+  routes/         # Nitro server routes (RSS, sitemap, OG image)
+nuxt.config.ts
+```
+
+## Writing Articles
+
+Articles live in `content/articles/*.md` with the frontmatter defined in `content.config.ts`:
+
+```yaml
+---
+title: "Article Title"
+description: Short description for SEO and listings
+date: 2026-01-01
+status: published      # draft | published | archived
+category: PHP
+tags:
+  - PHP
+  - Laravel
+---
+```
+
+See [AGENTS.md](./AGENTS.md) for the full development guide.
