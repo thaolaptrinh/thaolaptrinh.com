@@ -36,10 +36,10 @@
 		"zod": "^4.4.3"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.5.2",
+		"@biomejs/biome": "^2.5.3",
 		"@nuxt/fonts": "^0.14.0",
 		"@nuxtjs/sitemap": "^8.2.2",
 		"typescript": "^6.0.3",
-		"vue-tsc": "^3.3.6"
+		"vue-tsc": "^3.3.7"
 	}
 }
